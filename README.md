@@ -9,7 +9,26 @@ specific configurations and is based on the Opscode Postgres cookbook recipes.
 
 # Usage
 
-Add martinisoft-postgres in your run\_list
+Add martinisoft-postgres in your run\_list.
+
+If you use the server recipe, be sure to create an encrypted data bag
+called 'martinisoftware' with a 'database' item that contains the following
+structure:
+
+```json
+{
+  "id": "database",
+  "password": "thesamecombinationtomyluggage"
+}
+```
+
+This is needed to set the postgres user password to something other than
+an auto-generated password. You also need to make sure it is md5 encrypted
+via the following command:
+
+```
+echo -n 'thesamecombinationtomyluggage''postgres' | openssl md5 | sed -e 's/.* /md5/'
+```
 
 # Attributes
 
@@ -18,6 +37,7 @@ None
 # Recipes
 
 * default
+* server
 
 # License & Author
 

@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: martinisoft-postgresql
-# Recipe:: default
+# Recipe:: server
 #
 # Copyright (C) 2013 Aaron Kalin
 #
@@ -20,5 +20,13 @@
 # Include databag postgres password lookup
 include_recipe "martinisoft-postgresql::_postgres_password"
 
-include_recipe "postgresql::default"
+# Only allow Unix Socket connections
+node.normal['postgresql']['pg_hba'] = [
+  {:type => 'local', :db => 'all', :user => 'postgres', :addr => nil, :method => 'ident'},
+  {:type => 'local', :db => 'all', :user => 'all', :addr => nil, :method => 'ident'}
+]
+
+include_recipe "postgresql::server"
+include_recipe "postgresql::contrib"
+include_recipe "postgresql::config_pgtune"
 
