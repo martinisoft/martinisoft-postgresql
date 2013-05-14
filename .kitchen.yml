@@ -13,3 +13,7 @@ suites:
 - name: default
   run_list: ["recipe[martinisoft-postgresql]"]
   attributes: {}
+
+- name: server
+  run_list: ["recipe[martinisoft-postgresql::server]"]
+  attributes: {}
