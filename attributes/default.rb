@@ -17,6 +17,6 @@
 # limitations under the License.
 #
 
-normal['postgresql']['version'] = "9.2"
+normal['postgresql']['version'] = "9.3"
 normal['postgresql']['enable_pgdg_apt'] = true
 normal['postgresql']['config']['ssl'] = false
