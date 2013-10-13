@@ -2,4 +2,4 @@ site :opscode
 
 metadata
 
-cookbook 'postgresql', '~> 3.0'
+cookbook 'postgresql', '~> 3.1'
