@@ -9,4 +9,4 @@ version          IO.read(File.join(File.dirname(__FILE__), 'VERSION')) rescue '0
 supports 'ubuntu', '>= 12.04'
 
 depends 'martinisoft-server'
-depends 'postgresql'
+depends 'postgresql', '~> 3.4.2'
