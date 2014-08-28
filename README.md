@@ -6,6 +6,7 @@ specific configurations and is based on the Opscode Postgres cookbook recipes.
 # Requirements
 
 * Ubuntu 12.04
+* Ubuntu 14.04
 
 # Usage
 
@@ -36,12 +37,17 @@ None
 
 # Recipes
 
-* default
-* server
+### martinisoft-postgresql::default
+
+Fetches the server password and installs the postgresql client
+
+### martinisoft-postgresql::server
+
+Fetches the server password and installs the postgresql server
 
 # License & Author
 
-Copyright:: 2013, Aaron Kalin (<akalin@martinisoftware.com>)
+Copyright:: 2013 - 2014, Aaron Kalin (<akalin@martinisoftware.com>)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
