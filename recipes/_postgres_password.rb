@@ -2,7 +2,7 @@
 # Cookbook Name:: martinisoft-postgresql
 # Recipe:: _postgres_password
 #
-# Copyright (C) 2013 Aaron Kalin
+# Copyright (C) 2013 - 2014 Aaron Kalin
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
