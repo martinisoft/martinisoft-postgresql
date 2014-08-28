@@ -17,22 +17,17 @@
 # limitations under the License.
 #
 
-# Running in solo mode, set default password to 'postgres'
-if Chef::Config[:solo]
-  postgres_password = "3175bce1d3201d16594cebf9d7eb3f9d"
-else
-  postgres_password = begin
-                        password = Chef::EncryptedDataBagItem.load("martinisoftware", "database")
-                        password["password"]["postgres"]
-                      rescue => ex
-                        if ex.class == Errno::ENOENT
-                          Chef::Application.fatal!("Could not decrypt data bag! (#{ex})")
-                        else
-                          Chef::Application.fatal!(["Data bag 'martinisoftware' not found!",
-                                                   "Refer to the README for instructions."].join(' '))
-                        end
+postgres_password = begin
+                      password = chef_vault_item("martinisoftware", "database")
+                      password["postgres"]
+                    rescue => ex
+                      if ex.class == Errno::ENOENT
+                        Chef::Application.fatal!("Could not decrypt data bag! (#{ex})")
+                      else
+                        Chef::Application.fatal!(["Data bag 'martinisoftware' not found!",
+                                                 "Refer to the README for instructions.", ex].join(' '))
                       end
-end
+                    end
 
 # Set the postgres user password
-node.normal["postgresql"]["password"]["postgres"] = postgres_password
+node.set["postgresql"]["password"]["postgres"] = postgres_password

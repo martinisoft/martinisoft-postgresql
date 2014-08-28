@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+include_recipe "martinisoft-server"
+
 # Include databag postgres password lookup
 include_recipe "martinisoft-postgresql::_postgres_password"
 
